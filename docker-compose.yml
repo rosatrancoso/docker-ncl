@@ -1,0 +1,18 @@
+version: '2'
+services:
+
+  ncl:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      args:
+        uid: 1001
+        user: $USER
+    image: rosatrancoso/ncl
+    environment:
+      - DISPLAY=$DISPLAY
+    volumes:
+      - /tmp/.X11-unix:/tmp/.X11-unix
+      - $PWD:/work
+    tty: true
+    container_name: ncl
