@@ -1,3 +1,22 @@
+# tip to run manually
+
+https://sundowner.colorado.edu/wrfout_to_cf/overview.html
+
+Usage:
+
+    `ncl 'file_in="wrfout.nc"' 'file_out="wrfpost.nc"' wrfout_to_cf.ncl`
+    
+Files need to end with `*.nc` so that NCL recognizes them:
+
+1. link to local dir:
+
+    `find ../wrfout/ -iname 'wrfout*' -exec ln -s {} . \;`
+
+2. link with nc:
+    
+    `for FILE in wrfout*; do ln -s "$FILE" "$FILE".nc; done`
+
+
 # docker-ncl
 
 Centos docker with NCL installed for WRF post processing
