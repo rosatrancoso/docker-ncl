@@ -1,18 +1,15 @@
-version: '2'
+# export UID=`id -u`; export GID=`id -g`; docker-compose up -d
+
+version: "3.3"
+
 services:
 
-  ncl:
+  dev:
     build:
       context: .
-      dockerfile: Dockerfile
-      args:
-        uid: 1001
-        user: $USER
-    image: rosatrancoso/ncl
-    environment:
-      - DISPLAY=$DISPLAY
+      dockerfile: Dockerfile2
+    tty: True
+    user: $UID:$GID:$USER
     volumes:
-      - /tmp/.X11-unix:/tmp/.X11-unix
-      - $PWD:/work
-    tty: true
-    container_name: ncl
+      - ./wrfout_to_cf:/tmp/wrfout_to_cf
+      - $HOME/scratch/chch:/tmp/chch
